@@ -249,7 +249,7 @@ namespace Warden.Watchers.AzureServiceBus
         {
             var config = new AzureServiceBusWatcherConfiguration.Builder(connectionString);
             configurator?.Invoke((AzureServiceBusWatcherConfiguration.Default) config);
-            return new AzureServiceBusWatcher(DefaultName, config.Build(), group);
+            return new AzureServiceBusWatcher(name, config.Build(), group);
         }
 
     }
