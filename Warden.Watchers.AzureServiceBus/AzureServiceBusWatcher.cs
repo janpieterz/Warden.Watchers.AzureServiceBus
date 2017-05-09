@@ -39,7 +39,14 @@ namespace Warden.Watchers.AzureServiceBus
                         foreach (QueueDescription queueDescription in queuesToMonitor)
                         {
                             QueueClient client = QueueClient.CreateFromConnectionString(_configuration.ConnectionString, queueDescription.Path);
-                            var nextMessage = await client.PeekAsync();
+                            BrokeredMessage nextMessage = null;
+                            bool peeked = false;
+                            while (!peeked || (nextMessage != null && nextMessage.State != MessageState.Active))
+                            {
+                                nextMessage = await client.PeekAsync();
+                                peeked = true;
+                            }
+                            
                             if (nextMessage == null) continue;
                             string lastMessageId;
                             _queueProcessingMonitoring.TryGetValue(queueDescription.Path, out lastMessageId);
