@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Description>Warden watcher for Azure Service Bus</Description>
+    <VersionPrefix>1.3.1</VersionPrefix>
+    <Authors>Jan-Pieter Zoutewelle</Authors>
+    <TargetFramework>net461</TargetFramework>
+    <AssemblyName>Warden.Watchers.AzureServiceBus</AssemblyName>
+    <PackageId>Warden.Watchers.AzureServiceBus</PackageId>
+    <PackageTags>Warden;Azure;Service;Bus;ServiceBus</PackageTags>
+    <PackageProjectUrl>https://github.com/janpieterz/Warden.Watchers.AzureServiceBus</PackageProjectUrl>
+    <PackageLicenseUrl>https://raw.githubusercontent.com/janpieterz/Warden.Watchers.AzureServiceBus/master/LICENSE</PackageLicenseUrl>
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Warden" Version="1.3.0" />
+    <PackageReference Include="WindowsAzure.ServiceBus" Version="3.4.0" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net461' ">
+    <Reference Include="System" />
+    <Reference Include="Microsoft.CSharp" />
+  </ItemGroup>
+
+</Project>
